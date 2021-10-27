@@ -14,7 +14,7 @@ requirements = [m.groups()[0]
                 if m.groups()[0]]
 
 setup(
-    name='core_utils',
+    name='core-utils',
     version=VERSION,
     description='',
     long_description=README,
