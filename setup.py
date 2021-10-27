@@ -7,6 +7,12 @@ here = pathlib.Path(__file__).parent.resolve()
 README = (here / 'README.md').read_text(encoding='utf-8')
 VERSION = (here / 'VERSION').read_text()
 
+parse_reqs = re.compile(r"([^# \n]*)([# \n].*)?")
+reqs = (here / 'requirements.txt').read_text(encoding='utf-8')
+requirements = [m.groups()[0]
+                for m in map(parse_reqs.match, reqs.split('\n'))
+                if m.groups()[0]]
+
 setup(
     name='core_utils',
     version=VERSION,
@@ -19,10 +25,7 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
     python_requires='~=3.5',
-    install_requires=[
-        "django>=2.2.17",
-        "entitlements @ git+https://github.com/MoveBigRocks/entitlements",
-    ],
+    install_requires=requirements,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
