@@ -19,10 +19,7 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
     python_requires='~=3.5',
-    install_requires=[
-        "django>=2.2.17",
-        "entitlements @ git+https://github.com/MoveBigRocks/entitlements#egg=entitlements",
-    ],
+    install_requires=[],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
